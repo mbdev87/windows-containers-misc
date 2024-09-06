@@ -59,11 +59,11 @@ RUN powershell -Command `
     Remove-Item -Force "python-installer.exe"
 
 RUN powershell -Command `
-    Write-Output "MSBUILD:"; msbuild --version; Write-Output "`n"`
-    Write-Output "DOTNET:"; dotnet --version; Write-Output "`n"`
-    Write-Output "PYTHON:"; python --version; Write-Output "`n"`
-    Write-Output "GIT:"; git --version; Write-Output "`n"`
-    Write-Output "PERFORCE:"; p4 -V; Write-Output "`n";
+    Write-Host "MSBUILD: $(msbuild --version; Write-Host) `n"; `
+    Write-Host "DOTNET: $(dotnet --version; Write-Host) `n"; `
+    Write-Host "PYTHON: $(python --version; Write-Host) `n"; `
+    Write-Host "GIT: $(git --version; Write-Host) `n"; `
+    Write-Host "PERFORCE: $(p4 -V; Write-Host) `n";
 
 # Change to your own entry point. Enjoy :)
 ENTRYPOINT ["C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\Tools\\VsDevCmd.bat", "&&", "powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
